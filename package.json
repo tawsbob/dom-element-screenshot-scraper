@@ -1,0 +1,28 @@
+{
+  "name": "dom-element-screenshot-scraper",
+  "version": "1.0.0",
+  "description": "Pupperter wraper that take a screenshot of html dom element",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "prettier": "prettier --single-quote --trailing-comma es5 --no-semi --print-width 120 --write \"**/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tawsbob/dom-element-screenshot-scraper.git"
+  },
+  "author": "Dellean Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tawsbob/dom-element-screenshot-scraper/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier"
+    }
+  },
+  "homepage": "https://github.com/tawsbob/dom-element-screenshot-scraper#readme",
+  "dependencies": {
+    "puppeteer": "^1.18.1"
+  }
+}
