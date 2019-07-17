@@ -7,8 +7,9 @@ async function domElementScreenshot(params){
         //all params required
         const url                   = params.url
         const selector              = params.selector
-        const launchOptions         = params.launchOptions || {headless: false}
+        const launchOptions         = params.launchOptions || {headless: false }
         const setViewportOptions    = params.setViewportOptions || null
+        const screenshotOptions     = params.screenshotOptions || { path: 'element.png' }
         const pageOptions           = params.pageOptions || { waitUntil: 'networkidle2' }
 
         if(selector){
@@ -16,13 +17,16 @@ async function domElementScreenshot(params){
             const browser               = await puppeteer.launch(launchOptions)
             const browserPages          = await browser.pages()
             const browserPage           = browserPages[0]
-    
+            
             if(setViewportOptions) await browserPage.setViewport(setViewportOptions)
-    
+            
+
+
             await browserPage.goto(url, pageOptions)
+            await browserPage.waitFor(500)
             await browserPage.waitForSelector(selector)
             const element = await browserPage.$(selector)
-            await element.screenshot({ path: 'element.png' })
+            await element.screenshot(screenshotOptions)
             await browser.close()
 
             return true
@@ -41,18 +45,4 @@ async function domElementScreenshot(params){
     
 }
 
-(async () => {
-  
-    const response = await domElementScreenshot({
-        url: 'https://www.binance.com/en/trade/pro/BTC_USDT',
-        selector: '#__next div.chartContainer',
-        setViewportOptions: {
-            width: 1600,
-            height: 800,
-        }
-    })
-  
-})()
-
-
-
+module.exports = domElementScreenshot
