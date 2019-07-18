@@ -1,8 +1,7 @@
 const domElementScreenshot = require('./index.js')
 
-;(async () => {   
-
-    /*const _response = await domElementScreenshot({
+;(async () => {
+  /*const _response = await domElementScreenshot({
         url: 'https://www.google.com/',
         selector: '#hplogo',
         launchOptions: { headless: true, defaultViewport: { width: 1200, height: 575 } },
